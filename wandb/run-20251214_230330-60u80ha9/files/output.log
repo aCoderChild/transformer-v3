@@ -2,5 +2,35 @@ Epoch 1:   0%|                                         | 0/14063 [00:00<?, ?it/s
   warnings.warn(warn_msg)
 Epoch 1:   7%| | 999/14063 [10:22<1:15:35,  2.88it/s, loss=6.6331, ppl=759.84, lr/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
   warnings.warn(warn_msg)                               | 0/1563 [00:00<?, ?it/s]
-Epoch 1:  78%|▊| 10999/14063 [11:07:47<21:47,  2.34it/s, loss=5.2276, ppl=186.34,
-Validating:  91%|███████████▊ | 1422/1563 [02:31<00:13, 10.66it/s]               
+Traceback (most recent call last):                                               
+  File "/Users/maianhpham/Documents/MediTranslator/scripts/train.py", line 237, in <module>
+    main()
+  File "/Users/maianhpham/Documents/MediTranslator/scripts/train.py", line 231, in main
+    trainer.train()
+  File "/Users/maianhpham/Documents/MediTranslator/src/training/trainer.py", line 323, in train
+    train_loss = self.train_epoch(epoch)
+  File "/Users/maianhpham/Documents/MediTranslator/src/training/trainer.py", line 195, in train_epoch
+    loss.backward()
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/_tensor.py", line 647, in backward
+    torch.autograd.backward(
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: MPS backend out of memory (MPS allocated: 15.40 GiB, other allocations: 11.39 GiB, max allowed: 27.20 GiB). Tried to allocate 620.12 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+Traceback (most recent call last):
+  File "/Users/maianhpham/Documents/MediTranslator/scripts/train.py", line 237, in <module>
+    main()
+  File "/Users/maianhpham/Documents/MediTranslator/scripts/train.py", line 231, in main
+    trainer.train()
+  File "/Users/maianhpham/Documents/MediTranslator/src/training/trainer.py", line 323, in train
+    train_loss = self.train_epoch(epoch)
+  File "/Users/maianhpham/Documents/MediTranslator/src/training/trainer.py", line 195, in train_epoch
+    loss.backward()
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/_tensor.py", line 647, in backward
+    torch.autograd.backward(
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/autograd/__init__.py", line 354, in backward
+    _engine_run_backward(
+  File "/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/autograd/graph.py", line 829, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+RuntimeError: MPS backend out of memory (MPS allocated: 15.40 GiB, other allocations: 11.39 GiB, max allowed: 27.20 GiB). Tried to allocate 620.12 MiB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).

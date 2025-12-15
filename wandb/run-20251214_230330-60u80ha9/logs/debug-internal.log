@@ -18,3 +18,8 @@
 {"time":"2025-12-15T09:34:56.21307+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/joshuafoshua-university-of-engineering-and-technology-hanoi/nlp-transformer-mt/60u80ha9/file_stream\": dial tcp: lookup api.wandb.ai: no such host"}
 {"time":"2025-12-15T09:36:36.846851+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/joshuafoshua-university-of-engineering-and-technology-hanoi/nlp-transformer-mt/60u80ha9/file_stream\": EOF"}
 {"time":"2025-12-15T09:37:54.150807+07:00","level":"INFO","msg":"api: retrying error","error":"Post \"https://api.wandb.ai/files/joshuafoshua-university-of-engineering-and-technology-hanoi/nlp-transformer-mt/60u80ha9/file_stream\": dial tcp 35.186.228.49:443: connect: operation timed out"}
+{"time":"2025-12-15T15:26:46.477595+07:00","level":"INFO","msg":"stream: closing","id":"60u80ha9"}
+{"time":"2025-12-15T15:26:48.239716+07:00","level":"INFO","msg":"fileTransfer: Close: file transfer manager closed"}
+{"time":"2025-12-15T15:26:49.036125+07:00","level":"INFO","msg":"handler: closed","stream_id":"60u80ha9"}
+{"time":"2025-12-15T15:26:49.037005+07:00","level":"INFO","msg":"sender: closed","stream_id":"60u80ha9"}
+{"time":"2025-12-15T15:26:49.037122+07:00","level":"INFO","msg":"stream: closed","id":"60u80ha9"}

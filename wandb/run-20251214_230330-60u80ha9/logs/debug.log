@@ -20,3 +20,5 @@ config: {'model': {'d_model': 512, 'n_heads': 8, 'n_encoder_layers': 6, 'n_decod
 2025-12-14 23:03:33,340 INFO    MainThread:28309 [wandb_run.py:_redirect():2461] Redirects installed.
 2025-12-14 23:03:33,342 INFO    MainThread:28309 [wandb_init.py:init():1081] run started, returning control to user process
 2025-12-14 23:03:33,342 INFO    MainThread:28309 [wandb_watch.py:_watch():68] Watching
+2025-12-15 15:26:46,476 INFO    wandb-AsyncioManager-main:28309 [service_client.py:_forward_responses():80] Reached EOF.
+2025-12-15 15:26:46,478 INFO    wandb-AsyncioManager-main:28309 [mailbox.py:close():137] Closing mailbox, abandoning 1 handles.

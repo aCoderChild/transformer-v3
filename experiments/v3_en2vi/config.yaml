@@ -50,7 +50,7 @@ training:
   use_amp: true
   use_wandb: true # Enable Weights & Biases logging
 
-  save_every: 20000 # Save less frequently to save disk space
+  save_every: 500 # Save checkpoint every 500 steps for frequent backups
   eval_every: 1000
   log_every: 100
   early_stopping_patience: 10

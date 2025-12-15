@@ -1,0 +1,41 @@
+{
+  "os": "macOS-15.7.3-arm64-arm-64bit-Mach-O",
+  "python": "CPython 3.13.9",
+  "startedAt": "2025-12-14T15:47:06.567893Z",
+  "args": [
+    "--config",
+    "experiments/v3_vi2en/config.yaml"
+  ],
+  "program": "/Users/maianhpham/Documents/MediTranslator/scripts/train.py",
+  "codePath": "scripts/train.py",
+  "codePathLocal": "scripts/train.py",
+  "git": {
+    "remote": "https://github.com/MothMalone/MediTranslator.git",
+    "commit": "a25b173d9518b25d4ca95f7d616ececb5ab7e934"
+  },
+  "email": "nam28042004@gmail.com",
+  "root": "/Users/maianhpham/Documents/MediTranslator",
+  "host": "Mais-MacBook-Pro.local",
+  "executable": "/opt/miniconda3/bin/python",
+  "cpu_count": 12,
+  "cpu_count_logical": 12,
+  "disk": {
+    "/": {
+      "total": "494384795648",
+      "used": "274925166592"
+    }
+  },
+  "memory": {
+    "total": "25769803776"
+  },
+  "apple": {
+    "name": "Apple M4 Pro",
+    "ecpuCores": 4,
+    "pcpuCores": 8,
+    "gpuCores": 16,
+    "memoryGb": 24,
+    "swapTotalBytes": "5368709120",
+    "ramTotalBytes": "25769803776"
+  },
+  "writerId": "ltu66rc8h8fwq951x0x4dvhbejqd9yia"
+}

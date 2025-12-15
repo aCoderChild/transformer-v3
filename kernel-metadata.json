@@ -1,0 +1,15 @@
+{
+  "id": "bunnoob2005/meditranslator-v3-en-vi-training",
+  "title": "MediTranslator v3 En\u2192Vi Training",
+  "code_file": "kaggle_notebook.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": false,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [
+    "bunnoob2005/mediatranslator-training-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

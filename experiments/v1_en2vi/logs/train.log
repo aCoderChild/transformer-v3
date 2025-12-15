@@ -1,0 +1,46 @@
+2025-12-14 23:01:58,819 - train - INFO - ============================================================
+2025-12-14 23:01:58,819 - train - INFO - Starting training
+2025-12-14 23:01:58,819 - train - INFO - ============================================================
+2025-12-14 23:01:58,838 - train - INFO - Random seed: 42
+2025-12-14 23:01:58,838 - train - INFO - Using device: cuda
+2025-12-14 23:01:58,839 - train - INFO - Building vocabularies from data...
+2025-12-14 23:02:35,560 - train - INFO - ============================================================
+2025-12-14 23:02:35,560 - train - INFO - Starting training
+2025-12-14 23:02:35,560 - train - INFO - ============================================================
+2025-12-14 23:02:35,571 - train - INFO - Random seed: 42
+2025-12-14 23:02:35,571 - train - INFO - Using device: cuda
+2025-12-14 23:02:35,571 - train - INFO - Building vocabularies from data...
+2025-12-14 23:02:38,324 - train - INFO - Source vocabulary size: 40000
+2025-12-14 23:02:38,324 - train - INFO - Target vocabulary size: 40000
+2025-12-14 23:02:38,324 - train - INFO - Validation files not found. Splitting training data...
+2025-12-14 23:02:38,324 - train - INFO - Creating full training dataset...
+2025-12-14 23:02:44,016 - train - INFO - Splitting 500000 samples: 450000 train, 50000 val
+2025-12-14 23:02:44,026 - train - INFO - Training samples: 450000
+2025-12-14 23:02:44,026 - train - INFO - Validation samples: 50000
+2025-12-14 23:02:44,812 - train - INFO - ============================================================
+Model Summary
+============================================================
+Total parameters: 85.10M (85,101,632)
+Trainable parameters: 85.10M (85,101,632)
+Non-trainable parameters: 0
+============================================================
+2025-12-14 23:03:22,967 - train - INFO - ============================================================
+2025-12-14 23:03:22,967 - train - INFO - Starting training
+2025-12-14 23:03:22,967 - train - INFO - ============================================================
+2025-12-14 23:03:22,979 - train - INFO - Random seed: 42
+2025-12-14 23:03:22,979 - train - INFO - Using device: mps
+2025-12-14 23:03:22,979 - train - INFO - Loading existing vocabularies...
+2025-12-14 23:03:22,994 - train - INFO - Source vocabulary size: 40000
+2025-12-14 23:03:22,994 - train - INFO - Target vocabulary size: 40000
+2025-12-14 23:03:22,994 - train - INFO - Validation files not found. Splitting training data...
+2025-12-14 23:03:22,994 - train - INFO - Creating full training dataset...
+2025-12-14 23:03:28,728 - train - INFO - Splitting 500000 samples: 450000 train, 50000 val
+2025-12-14 23:03:28,734 - train - INFO - Training samples: 450000
+2025-12-14 23:03:28,734 - train - INFO - Validation samples: 50000
+2025-12-14 23:03:29,513 - train - INFO - ============================================================
+Model Summary
+============================================================
+Total parameters: 85.10M (85,101,632)
+Trainable parameters: 85.10M (85,101,632)
+Non-trainable parameters: 0
+============================================================

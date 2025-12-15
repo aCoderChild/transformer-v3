@@ -1,0 +1,15 @@
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_setup.py:_flush():80] Current SDK version is 0.23.1
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_setup.py:_flush():80] Configure stats pid to 25283
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_setup.py:_flush():80] Loading settings from /Users/maianhpham/.config/wandb/settings
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_setup.py:_flush():80] Loading settings from /Users/maianhpham/Documents/MediTranslator/wandb/settings
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_setup.py:_flush():80] Loading settings from environment variables
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_init.py:setup_run_log_directory():714] Logging user logs to /Users/maianhpham/Documents/MediTranslator/wandb/run-20251214_224252-mjp1h9r2/logs/debug.log
+2025-12-14 22:42:52,737 INFO    MainThread:25283 [wandb_init.py:setup_run_log_directory():715] Logging internal logs to /Users/maianhpham/Documents/MediTranslator/wandb/run-20251214_224252-mjp1h9r2/logs/debug-internal.log
+2025-12-14 22:42:52,738 INFO    MainThread:25283 [wandb_init.py:init():841] calling init triggers
+2025-12-14 22:42:52,738 INFO    MainThread:25283 [wandb_init.py:init():846] wandb.init called with sweep_config: {}
+config: {'model': {'d_model': 1024, 'n_heads': 16, 'n_encoder_layers': 6, 'n_decoder_layers': 6, 'd_ff': 4096, 'dropout': 0.3, 'max_seq_length': 512}, 'training': {'batch_size': 8, 'epochs': 50, 'optimizer': 'adamw', 'learning_rate': 0.0001, 'weight_decay': 0.01, 'betas': [0.9, 0.98], 'scheduler': 'cosine', 'warmup_steps': 8000, 'label_smoothing': 0.1, 'gradient_accumulation_steps': 8, 'max_grad_norm': 1.0, 'use_amp': True, 'use_wandb': True, 'save_every': 20000, 'eval_every': 1000, 'log_every': 100, 'early_stopping_patience': 10}, 'vocab': {'src_vocab_size': 50000, 'tgt_vocab_size': 50000, 'min_freq': 1, 'tokenization': 'bpe'}, '_wandb': {}}
+2025-12-14 22:42:52,738 INFO    MainThread:25283 [wandb_init.py:init():889] starting backend
+2025-12-14 22:42:53,425 INFO    MainThread:25283 [wandb_init.py:init():892] sending inform_init request
+2025-12-14 22:42:53,473 INFO    MainThread:25283 [wandb_init.py:init():900] backend started and connected
+2025-12-14 22:42:53,475 INFO    MainThread:25283 [wandb_init.py:init():970] updated telemetry
+2025-12-14 22:42:53,504 INFO    MainThread:25283 [wandb_init.py:init():994] communicating run to backend with 90.0 second timeout

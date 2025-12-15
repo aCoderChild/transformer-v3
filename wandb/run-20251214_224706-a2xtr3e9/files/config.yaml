@@ -1,0 +1,89 @@
+_wandb:
+    value:
+        cli_version: 0.23.1
+        e:
+            ltu66rc8h8fwq951x0x4dvhbejqd9yia:
+                apple:
+                    ecpuCores: 4
+                    gpuCores: 16
+                    memoryGb: 24
+                    name: Apple M4 Pro
+                    pcpuCores: 8
+                    ramTotalBytes: "25769803776"
+                    swapTotalBytes: "5368709120"
+                args:
+                    - --config
+                    - experiments/v3_vi2en/config.yaml
+                codePath: scripts/train.py
+                codePathLocal: scripts/train.py
+                cpu_count: 12
+                cpu_count_logical: 12
+                disk:
+                    /:
+                        total: "494384795648"
+                        used: "274925166592"
+                email: nam28042004@gmail.com
+                executable: /opt/miniconda3/bin/python
+                git:
+                    commit: a25b173d9518b25d4ca95f7d616ececb5ab7e934
+                    remote: https://github.com/MothMalone/MediTranslator.git
+                host: Mais-MacBook-Pro.local
+                memory:
+                    total: "25769803776"
+                os: macOS-15.7.3-arm64-arm-64bit-Mach-O
+                program: /Users/maianhpham/Documents/MediTranslator/scripts/train.py
+                python: CPython 3.13.9
+                root: /Users/maianhpham/Documents/MediTranslator
+                startedAt: "2025-12-14T15:47:06.567893Z"
+                writerId: ltu66rc8h8fwq951x0x4dvhbejqd9yia
+        m: []
+        python_version: 3.13.9
+        t:
+            "1":
+                - 1
+            "2":
+                - 1
+            "3":
+                - 1
+                - 13
+                - 16
+            "4": 3.13.9
+            "5": 0.23.1
+            "12": 0.23.1
+            "13": darwin-arm64
+model:
+    value:
+        d_ff: 4096
+        d_model: 1024
+        dropout: 0.3
+        max_seq_length: 512
+        n_decoder_layers: 6
+        n_encoder_layers: 6
+        n_heads: 16
+training:
+    value:
+        batch_size: 8
+        betas:
+            - 0.9
+            - 0.98
+        early_stopping_patience: 10
+        epochs: 50
+        eval_every: 1000
+        gradient_accumulation_steps: 8
+        label_smoothing: 0.1
+        learning_rate: 0.0001
+        log_every: 100
+        max_grad_norm: 1
+        optimizer: adamw
+        save_every: 20000
+        scheduler: cosine
+        use_amp: true
+        use_wandb: true
+        warmup_steps: 8000
+        weight_decay: 0.01
+vocab:
+    value:
+        min_freq: 1
+        src_vocab_size: 50000
+        tgt_vocab_size: 50000
+        tokenization: bpe

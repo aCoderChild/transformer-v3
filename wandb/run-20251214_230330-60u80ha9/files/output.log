@@ -2,5 +2,5 @@ Epoch 1:   0%|                                         | 0/14063 [00:00<?, ?it/s
   warnings.warn(warn_msg)
 Epoch 1:   7%| | 999/14063 [10:22<1:15:35,  2.88it/s, loss=6.6331, ppl=759.84, lr/Users/maianhpham/Documents/MediTranslator/.venv/lib/python3.9/site-packages/torch/utils/data/dataloader.py:684: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
   warnings.warn(warn_msg)                               | 0/1563 [00:00<?, ?it/s]
-Epoch 1:  71%|▋| 9936/14063 [10:07:20<30:05,  2.29it/s, loss=5.2012, ppl=181.49, 
-                                                                                 
+Epoch 1:  78%|▊| 10999/14063 [11:07:47<21:47,  2.34it/s, loss=5.2276, ppl=186.34,
+Validating:  91%|███████████▊ | 1422/1563 [02:31<00:13, 10.66it/s]               

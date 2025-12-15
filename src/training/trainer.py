@@ -10,6 +10,7 @@ import os
 import logging
 from tqdm import tqdm
 import time
+import shutil
 
 from .loss import LabelSmoothingLoss, CrossEntropyLoss
 from .optimizer import get_optimizer, get_scheduler
@@ -366,6 +367,29 @@ class Trainer:
         
         torch.save(checkpoint, filepath)
         logger.info(f"Saved checkpoint to {filepath}")
+        
+        # Backup to Kaggle output if running on Kaggle
+        self._backup_checkpoint(filepath)
+    
+    def _backup_checkpoint(self, filepath: str):
+        """Backup checkpoint to /kaggle/output/ for easy download."""
+        # Check if running on Kaggle
+        if os.path.exists('/kaggle/output/'):
+            try:
+                # Create backup directory structure
+                experiment_name = os.path.basename(os.path.dirname(self.checkpoint_dir))
+                backup_dir = f'/kaggle/output/{experiment_name}/checkpoints'
+                os.makedirs(backup_dir, exist_ok=True)
+                
+                # Copy checkpoint
+                filename = os.path.basename(filepath)
+                backup_path = os.path.join(backup_dir, filename)
+                shutil.copy2(filepath, backup_path)
+                
+                size_mb = os.path.getsize(backup_path) / (1024**2)
+                logger.info(f"✓ Backed up {filename} ({size_mb:.1f} MB) to Kaggle output")
+            except Exception as e:
+                logger.warning(f"Could not backup checkpoint: {e}")
     
     def load_checkpoint(self, filepath: str):
         """Load model checkpoint."""

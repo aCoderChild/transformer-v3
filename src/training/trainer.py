@@ -372,24 +372,133 @@ class Trainer:
         self._backup_checkpoint(filepath)
     
     def _backup_checkpoint(self, filepath: str):
-        """Backup checkpoint to /kaggle/output/ for easy download."""
-        # Check if running on Kaggle
-        if os.path.exists('/kaggle/output/'):
+        """
+        Backup checkpoint to multiple locations during training:
+        1. Local computer (preferred)
+        2. Google Drive (if available, fallback)
+        3. Kaggle output (if running on Kaggle)
+        """
+        filename = os.path.basename(filepath)
+        size_mb = os.path.getsize(filepath) / (1024**2)
+        
+        # Priority 1: Save to local computer
+        local_backup = self._backup_to_local(filepath, filename, size_mb)
+        if local_backup:
+            return
+        
+        # Priority 2: Try Google Drive (for Colab)
+        drive_backup = self._backup_to_drive(filepath, filename, size_mb)
+        if drive_backup:
+            return
+        
+        # Priority 3: Kaggle output (if running on Kaggle)
+        kaggle_backup = self._backup_to_kaggle(filepath, filename, size_mb)
+        
+        if not (local_backup or drive_backup or kaggle_backup):
+            logger.warning(f"Could not backup checkpoint to any location: {filename}")
+    
+    def _backup_to_local(self, filepath: str, filename: str, size_mb: float) -> bool:
+        """
+        Backup checkpoint to local computer.
+        Look for typical local paths outside Kaggle/Colab environments.
+        """
+        # Check if we're in a typical local development environment
+        home_dir = os.path.expanduser("~")
+        local_backup_dirs = [
+            os.path.join(home_dir, "MediTranslator_Backups"),
+            os.path.join(home_dir, "Documents", "MediTranslator_Backups"),
+            "/tmp/medi_translator_backups",  # Linux/Mac temp
+        ]
+        
+        # Try to find a writable local backup directory
+        for backup_dir in local_backup_dirs:
+            # Skip if we're already in a Kaggle or Colab environment
+            if '/kaggle/' in os.getcwd() or '/content/' in os.getcwd():
+                continue
+            
             try:
-                # Create backup directory structure
                 experiment_name = os.path.basename(os.path.dirname(self.checkpoint_dir))
-                backup_dir = f'/kaggle/output/{experiment_name}/checkpoints'
-                os.makedirs(backup_dir, exist_ok=True)
+                full_backup_dir = os.path.join(backup_dir, experiment_name, 'checkpoints')
+                os.makedirs(full_backup_dir, exist_ok=True)
                 
-                # Copy checkpoint
-                filename = os.path.basename(filepath)
-                backup_path = os.path.join(backup_dir, filename)
+                backup_path = os.path.join(full_backup_dir, filename)
                 shutil.copy2(filepath, backup_path)
                 
-                size_mb = os.path.getsize(backup_path) / (1024**2)
-                logger.info(f"✓ Backed up {filename} ({size_mb:.1f} MB) to Kaggle output")
+                if os.path.exists(backup_path):
+                    logger.info(f"✓ Backed up {filename} ({size_mb:.1f} MB) to local: {full_backup_dir}")
+                    print(f"✓ CHECKPOINT SAVED LOCALLY: {filename} ({size_mb:.1f} MB)")
+                    return True
             except Exception as e:
-                logger.warning(f"Could not backup checkpoint: {e}")
+                logger.debug(f"Could not backup to {backup_dir}: {e}")
+                continue
+        
+        return False
+    
+    def _backup_to_drive(self, filepath: str, filename: str, size_mb: float) -> bool:
+        """
+        Backup checkpoint to Google Drive (for Colab environments).
+        """
+        try:
+            # Check if running in Colab
+            from google.colab import drive
+            
+            # Check if Drive is already mounted
+            drive_mount = '/content/drive'
+            if not os.path.exists(drive_mount):
+                logger.warning("Google Drive not mounted in Colab")
+                return False
+            
+            try:
+                experiment_name = os.path.basename(os.path.dirname(self.checkpoint_dir))
+                drive_backup_dir = os.path.join(
+                    drive_mount, 'MyDrive', 'MediTranslator_Checkpoints',
+                    experiment_name, 'checkpoints'
+                )
+                os.makedirs(drive_backup_dir, exist_ok=True)
+                
+                backup_path = os.path.join(drive_backup_dir, filename)
+                shutil.copy2(filepath, backup_path)
+                
+                if os.path.exists(backup_path):
+                    logger.info(f"✓ Backed up {filename} ({size_mb:.1f} MB) to Google Drive: {drive_backup_dir}")
+                    print(f"✓ CHECKPOINT SAVED TO DRIVE: {filename} ({size_mb:.1f} MB)")
+                    return True
+            except Exception as e:
+                logger.warning(f"Could not backup to Google Drive: {e}")
+                return False
+                
+        except ImportError:
+            # Not running in Colab
+            return False
+    
+    def _backup_to_kaggle(self, filepath: str, filename: str, size_mb: float) -> bool:
+        """
+        Backup checkpoint to Kaggle output directory.
+        """
+        kaggle_output = '/kaggle/output/'
+        if not os.path.exists(kaggle_output):
+            return False
+        
+        try:
+            experiment_name = os.path.basename(os.path.dirname(self.checkpoint_dir))
+            backup_dir = os.path.join(kaggle_output, experiment_name, 'checkpoints')
+            os.makedirs(backup_dir, exist_ok=True)
+            
+            backup_path = os.path.join(backup_dir, filename)
+            shutil.copy2(filepath, backup_path)
+            
+            if os.path.exists(backup_path):
+                logger.info(f"✓ Backed up {filename} ({size_mb:.1f} MB) to Kaggle: {backup_dir}")
+                print(f"✓ CHECKPOINT SAVED TO KAGGLE: {filename} ({size_mb:.1f} MB)")
+                return True
+            else:
+                logger.warning(f"Backup failed: {backup_path} not found after copy")
+                return False
+                
+        except Exception as e:
+            logger.warning(f"Could not backup checkpoint to Kaggle: {e}")
+            print(f"✗ KAGGLE BACKUP FAILED: {e}")
+            return False
     
     def load_checkpoint(self, filepath: str):
         """Load model checkpoint."""
